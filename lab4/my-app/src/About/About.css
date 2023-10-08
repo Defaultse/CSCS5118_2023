@@ -1,0 +1,15 @@
+.about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+.about-title {
+    font-size: 32px;
+    margin: 20px 0;
+}
+  
+.about-content {
+    max-width: 960px;
+    margin: 0 auto;
+}

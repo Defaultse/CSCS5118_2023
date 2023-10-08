@@ -1,0 +1,23 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  background-color: #2793c5;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-link-container {
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: #000;
+  font-size: 16px;
+}
+
+.navbar-link:hover {
+  color: #fff;
+}
