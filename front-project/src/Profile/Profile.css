@@ -1,0 +1,71 @@
+.info
+{
+  /* align-items: center;
+  border-radius: 15px;
+  flex-direction: column; */
+  /* width: 900px; */
+  /* height: 350px; */
+  /* display: flex; */
+  /* margin-left: 75px; */
+  /* margin-top: 75px; */
+  /* background-color: white;  */
+
+  width: 100%;
+  height: auto;
+  padding: 0;
+  margin: 0px auto;
+  font-family: Calibri, Georgia, Ubuntu-C;  
+  font-size: 16px;
+  margin-bottom: 20PX
+}
+
+.profile-side{
+  margin-left: 5em;
+  width: 210px;
+  height: 700px;
+  background-repeat:repeat-y;
+  overflow:hidden;  
+  position:absolute;
+  font-size: 16px;
+}
+
+.lots-side{
+  height: auto;
+  padding: 20px;
+  margin-left: 400px;
+  margin-right: 200px;
+  padding-bottom: 30px;
+  overflow: auto;
+}
+
+.info img{
+  width: 200px;
+}
+
+.container{
+  /* align-items: center; */
+  margin-left: 15em;
+}
+
+.profile{  
+  margin-left: 15px;
+  background-color: white;
+  margin-top: 10px;
+  font-weight: bold;
+  font-family: "Open Sans", sans-serif;
+}
+
+.id{
+    margin-left: 15px;
+  background-color: white;
+  margin-top: 10px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.lots{
+  margin-left: 10px;
+  background-color: white;
+  margin-top: 35px;
+  font-weight: bold;
+  font-family: "Open Sans", sans-serif;
+}

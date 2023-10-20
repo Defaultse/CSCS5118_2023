@@ -1,0 +1,61 @@
+.Recipes{
+    background-color: #808080;
+    
+    
+}
+
+.search-form{
+    min-height:  10vh;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    /* background-color: #3498DB ;  */
+}
+
+.search-bar{
+    width: 50%; 
+    box-shadow: black;
+    padding: 10px; 
+    background: white;
+    display: 30px;
+}
+
+.search-buttom{
+    box-shadow: black;
+    background:black;
+    border: black; 
+    padding: 10px; 
+    color: white;  display: 30px;
+}
+
+.container {
+    display: 30px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    /* background-color:#3498DB;  */
+}
+
+.recipe {
+    border-radius: 25px;
+    margin: 30px; 
+    display: flex; 
+    flex-direction: column;
+    justify-content: normal;
+    background: white;
+    align-items: center;
+    min-width: 40%; 
+    
+}
+
+.image {
+    padding-top: 10px;
+    border-radius: 5%;
+}
+
+.title{
+    background-color: white;
+}
+
+.ingredients{
+    background-color: white;
+}

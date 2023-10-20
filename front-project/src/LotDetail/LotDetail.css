@@ -1,0 +1,13 @@
+.card {
+    margin-top: 30px;
+    float: left;
+    width: 20rem;
+    margin-left: 10em;
+}
+
+.mb-3{
+    margin-top: 30px;
+    float: right;
+    margin-right: 30em;
+    width: 35em;
+}
