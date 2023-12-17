@@ -22,7 +22,7 @@ function App() {
       <Switch>
         <Route path='/sign-up' exact component={SignUp}/>
         <Route path='/sign-in' exact component={SignIn}/>
-        <Route path='/log-out' exact component={SignIn}/>
+        <Route path='/logout' exact component={SignIn}/>
         <Route path='/' exact component={LotsList}/>
         <Route path='/lots/:id' render={(props)=><LotDetail {...props}/>} />
         <Route path='/add-product' exact component={AddProduct}/>

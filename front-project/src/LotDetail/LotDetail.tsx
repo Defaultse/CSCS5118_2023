@@ -44,25 +44,35 @@ function addComment(description: string): CommentI {
 
 export default function LotDetail({ match }): ReactElement {
   const [productDetails, setProductDetails] = useState<any>({
-    "id": 1,
-    "owner_id": 2,
-    "title": "Product 1",
-    "price": 19.99,
-    "description": "Description of Product 1",
-    "is_sold": false,
-    "category": "Category A"
+    id: '',
+    seller_id: '',
+    title: "",
+    price: 0,
+    description: "",
+    category: "Category A",
   });
   const [comments, dispatch] = useReducer(reducer, []);
   const [description, setDescription] = useState("");
   const account = JSON.parse(localStorage.getItem("account") || "{}");
 
-  // useEffect(() => {
-  //   Axios.post("http://localhost:8080/api/get/product", {
-  //     product_id: match.params.id,
-  //   }).then((response) => {
-  // setProductDetails(response.data[0]);
-  //   });
-  // }, []);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    Axios.get(`http://127.0.0.1:8000/api/product/${match.params.id}/`)
+      .then((response) => {
+        setProductDetails(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching product details:", error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [match.params.id]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   const addToFav = () => {
     var old = JSON.parse(localStorage.getItem("favorites") || "{}");
@@ -88,12 +98,12 @@ export default function LotDetail({ match }): ReactElement {
             <img src="/images/demo.jpg" style={{ width: "100%" }} />
           </li>
           <li className="list-group-item">
-            <h1>Title: {productDetails.title}</h1>
+            <h1>Title: {productDetails.name}</h1>
             <p>Price: {productDetails.price}KZT</p>
           </li>
           <li className="list-group-item">
             <p>Description:{productDetails.description}</p>
-            <p>Contacts of owner: {productDetails.owner_id}</p>
+            <p>Contacts of owner: {productDetails.seller_id}</p>
             <button className="btn btn-primary" onClick={addToFav}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

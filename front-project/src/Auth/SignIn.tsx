@@ -7,37 +7,54 @@ import Button from "react-bootstrap/Button";
 import "./SignIn.css";
 
 export default function SignInState(): ReactElement {
-  const [enteredEmail, setEmailState] = useState("");
+  const [enteredUsername, setUsernameState] = useState("");
   const [enteredPassword, setPasswordState] = useState("");
   const dispatch = useDispatch();
 
-  const login = () => {
-    localStorage.setItem("account", JSON.stringify(""));
-    dispatch({ type: Logged.SIGN_IN });
-    window.location.replace("/profile");
+  const login = async () => {
+    try {
+      const response = await Axios.post("http://127.0.0.1:8000/api/sign-in/", {
+        username: enteredUsername,
+        password: enteredPassword,
+      }, {
+        withCredentials: true,
+      });
+
+      console.log(response.data.access);
+
+      const token = response.data.access;
+
+      localStorage.setItem("jwtToken", token);
+
+      dispatch({ type: Logged.SIGN_IN });
+      window.location.replace("/profile");
+    } catch (error) {
+      console.error("Login failed", error);
+    }
   };
 
-  const email = useRef<HTMLInputElement>(null);
+
+  const username = useRef<HTMLInputElement>(null);
   const password = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    email.current?.focus();
+    username.current?.focus();
   }, []);
 
   return (
     <div className="container1">
       <div className="header">Sign in</div>
       <fieldset className="fieldset">
-        <div className="email">
-          <label className="email"> Email</label>
+        <div className="username">
+          <label className="username">Username</label>
           <input
             className="input"
             type="text"
-            name="email"
+            name="username"
             onChange={(e) => {
-              setEmailState(e.target.value);
+              setUsernameState(e.target.value);
             }}
-            ref={email}
+            ref={username}
           />
         </div>
 

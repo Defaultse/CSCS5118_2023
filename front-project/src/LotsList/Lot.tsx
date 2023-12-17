@@ -12,7 +12,7 @@ interface Props {
 interface Lot {
   owner_id: number;
   id: number;
-  title: string;
+  name: string;
   price: number;
 }
 
@@ -40,7 +40,7 @@ export default function Lot({ lot, userId }: Props): ReactElement {
         alt="..."
       />
       <div className="card-body">
-        <h5 className="card-title">{lot.title}</h5>
+        <h5 className="card-title">{lot.name}</h5>
         <p className="card-text">{lot.price}KZT</p>
         {userId == account.id ? (
           <Button onClick={() => deleteProduct(lot.id)}>Delete</Button>
