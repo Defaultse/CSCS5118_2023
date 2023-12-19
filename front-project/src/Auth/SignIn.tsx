@@ -2,7 +2,7 @@ import Axios from "axios";
 import React, { ReactElement, useState, useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { Logged } from "../reducers/Logged";
+import { Logged, Seller } from "../reducers/states";
 import Button from "react-bootstrap/Button";
 import "./SignIn.css";
 
@@ -13,26 +13,35 @@ export default function SignInState(): ReactElement {
 
   const login = async () => {
     try {
-      const response = await Axios.post("http://127.0.0.1:8000/api/sign-in/", {
-        username: enteredUsername,
-        password: enteredPassword,
-      }, {
-        withCredentials: true,
-      });
+      const response = await Axios.post(
+        "http://127.0.0.1:8000/api/sign-in/",
+        {
+          username: enteredUsername,
+          password: enteredPassword,
+        },
+        {
+          withCredentials: true,
+        }
+      );
 
       console.log(response.data.access);
 
       const token = response.data.access;
 
       localStorage.setItem("jwtToken", token);
-
       dispatch({ type: Logged.SIGN_IN });
+
+      if (response.data.user_type === "seller") {
+        dispatch({ type: Seller.SET_SELLER });
+      } else {
+        dispatch({ type: Seller.UNSET_SELLER });
+      }
+
       window.location.replace("/profile");
     } catch (error) {
       console.error("Login failed", error);
     }
   };
-
 
   const username = useRef<HTMLInputElement>(null);
   const password = useRef<HTMLInputElement>(null);

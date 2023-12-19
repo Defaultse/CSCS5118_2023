@@ -1,13 +1,16 @@
 import React, { ReactElement } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Logged } from "../reducers/Logged";
+import { Logged } from "../reducers/states";
 import "./Navbar.css";
 
 export default function NavBar(): ReactElement {
   const logged = useSelector((state: any) => state.isLogged);
+  const isSeller = useSelector((state: any) => state.isSeller);
+
   const dispatch = useDispatch();
 
+  console.log(isSeller);
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <a className="navbar-brand" href="/">
@@ -23,9 +26,18 @@ export default function NavBar(): ReactElement {
             <Link to="/favorites">
               <li className="nav-item">Favorites</li>
             </Link>
-            <Link to="/add-product">
-              <li className="nav-item">Add Product</li>
-            </Link>
+
+            {isSeller === true ? (
+              <>
+                {" "}
+                <Link to="/add-product">
+                  <li className="nav-item">Add Product</li>
+                </Link>{" "}
+              </>
+            ) : (
+              <></>
+            )}
+
             <Link to="/profile">
               <li className="nav-item">Profile</li>
             </Link>
